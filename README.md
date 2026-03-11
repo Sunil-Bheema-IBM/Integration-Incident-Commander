@@ -1,226 +1,288 @@
+# Integration Incident Commander - README.md
+
+Here is the complete README.md content for your project:
+
+---
+
 # Integration Incident Commander (IIC)
 
-## Overview
+> AI-Powered Multi-Agent System for Automated Integration Failure Diagnosis
 
-The Integration Incident Commander is an AI-powered system that automatically diagnoses integration failures using a multi-agent workflow. It simulates real enterprise integration scenarios and provides intelligent root cause analysis.
+## 🎯 Overview
 
-## Architecture
+Integration Incident Commander is a prototype application that demonstrates how AI agents can automatically diagnose integration failures in enterprise systems. The system simulates a real-world integration scenario and uses a multi-agent AI workflow to analyze failures, identify root causes, and suggest fixes.
 
+### Key Features
+
+- 🤖 **Multi-Agent AI System** - 4 specialized agents (Product Owner, Developer, Architect, Security)
+- 🔍 **Automated Root Cause Analysis** - AI-driven investigation of integration failures
+- 📊 **Real-time Investigation Timeline** - Visual representation of agent reasoning
+- 🔒 **Security & Compliance** - FedRAMP-style controls and compliance reporting
+- 🛠️ **Auto-Fix Capability** - Automatic remediation of common issues
+- 📈 **Knowledge Graph** - MCP-powered context sharing across agents
+
+## 🏗️ Architecture
+
+### Integration Flow
 ```
-Frontend (React) → Backend API (Node.js/Express) → AI Agents → Integration Services
-                                                        ↓
-                                                   Log Analysis
-```
-
-## Features
-
-- **Simulated Integration Workflow**: Order API → Payment Service → Database
-- **Multi-Agent AI System**: Product Owner, Developer, Architect, and Security agents
-- **Automated Root Cause Analysis**: AI-driven incident diagnosis
-- **Real-time Investigation Timeline**: Track agent reasoning process
-- **Compliance Validation**: Security and compliance checks
-- **Interactive Dashboard**: Monitor integration status and incidents
-
-## Project Structure
-
-```
-integration-incident-commander/
-├── frontend/              # React dashboard
-├── backend/              # Node.js Express API
-├── agents/               # Multi-agent AI system
-├── logs/                 # Sample logs and log storage
-├── docs/                 # Documentation
-└── README.md
+Frontend → Order API → Payment Service → Database
+                ↓
+         (Failure Point)
+                ↓
+         AI Agent Analysis
+                ↓
+         Root Cause + Fix
 ```
 
-## Prerequisites
+### Multi-Agent System
+```
+Incident Triggered
+       ↓
+🎯 Product Owner: Define scope & business impact
+       ↓
+💻 Developer: Analyze logs & identify root cause
+       ↓
+🏗️ Architect: Map dependencies & assess impact
+       ↓
+🔒 Security: Validate compliance & security
+       ↓
+Final Report: Consolidated findings & solution
+```
 
-- Node.js 16+ and npm
-- Modern web browser
+## 📦 Prerequisites
 
-## Quick Start
+- Node.js >= 14.0.0
+- npm >= 6.0.0
+- Git
+
+## 🚀 Quick Start
 
 ### 1. Install Dependencies
 
+**Backend:**
 ```bash
-# Install backend dependencies
 cd backend
-npm install
-
-# Install frontend dependencies
-cd ../frontend
 npm install
 ```
 
-### 2. Start Backend Server
+**Frontend:**
+```bash
+cd frontend
+npm install
+```
 
+### 2. Start the Application
+
+**Terminal 1 - Backend:**
 ```bash
 cd backend
 npm start
 ```
+Backend runs on: `http://localhost:5000`
 
-Backend will run on `http://localhost:3001`
-
-### 3. Start Frontend
-
+**Terminal 2 - Frontend:**
 ```bash
 cd frontend
 npm start
 ```
+Frontend runs on: `http://localhost:3000`
 
-Frontend will run on `http://localhost:3000`
+### 3. Trigger an Incident
 
-### 4. Access Dashboard
+1. Open browser to `http://localhost:3000`
+2. Click **"Trigger Integration Workflow"** button
+3. Watch the integration fail (simulated OAuth token expiration)
+4. Observe AI agents automatically analyze the failure
+5. Review the investigation timeline and incident report
+6. Click **"Apply Fix"** to remediate the issue
+7. Trigger workflow again to verify fix
 
-Open your browser and navigate to `http://localhost:3000`
-
-## Usage
-
-### Basic Workflow
-
-1. **Trigger Integration**: Click "Trigger Integration Workflow" button
-2. **Simulate Failure**: The system will simulate a payment API failure
-3. **Watch AI Analysis**: Observe the multi-agent investigation timeline
-4. **Review Report**: See the final incident report with root cause and fix suggestions
-5. **Apply AI Fix**: Click "Apply AI Suggested Fix & Re-run Integration" to automatically fix and retry
-
-### Auto-Fix Feature
-
-After the AI agents complete their analysis, you can:
-- Click the **"Apply AI Suggested Fix & Re-run Integration"** button
-- The system will automatically enable the token refresh middleware
-- A new integration workflow will be triggered
-- Watch the integration succeed with the fix applied
-- See the success message: "✅ Integration Recovered Successfully!"
-
-### Testing the Auto-Fix Endpoint
-
-If the auto-fix button shows "Failed to apply fix", run this test:
-
-```bash
-cd backend
-node test-apply-fix.js
-```
-
-This will verify:
-- Backend server is running
-- Endpoint is accessible
-- Response format is correct
-
-For detailed debugging, see [`docs/AUTO_FIX_DEBUGGING.md`](docs/AUTO_FIX_DEBUGGING.md)
-
-## Multi-Agent System
+## 🤖 Multi-Agent Workflow
 
 ### Agent Roles
 
-1. **Product Owner Agent**: Defines investigation scope
-2. **Developer Agent**: Analyzes technical root cause
-3. **Architect Agent**: Identifies system dependencies
-4. **Security Agent**: Evaluates compliance risks
+#### 🎯 Product Owner Agent
+- Business impact assessment
+- Priority assignment (P1/P2/P3/P4)
+- Investigation scope definition
+- Success criteria
 
-### Agent Workflow
+#### 💻 Developer Agent
+- Root cause identification
+- Code location references
+- Technical solution proposal
+- Confidence score (85-95%)
+
+#### 🏗️ Architect Agent
+- Dependency mapping
+- Blast radius assessment
+- Architectural recommendations
+- Integration gap identification
+
+#### 🔒 Security Agent
+- Compliance violation identification
+- Security risk assessment (CVSS scoring)
+- Remediation recommendations
+- Framework validation (PCI DSS, SOC 2, GDPR)
+
+**Typical Analysis Time:** 2-5 seconds  
+**Overall Confidence:** 85-95%
+
+## 📁 Project Structure
 
 ```
-Incident Triggered
-    ↓
-Product Owner Agent (Scope Definition)
-    ↓
-Developer Agent (Log Analysis)
-    ↓
-Architect Agent (Dependency Impact)
-    ↓
-Security Agent (Compliance Check)
-    ↓
-Final Incident Report
+integration-incident-commander/
+├── backend/
+│   ├── server.js                 # Express server
+│   ├── agents/
+│   │   ├── agentOrchestrator.js  # Multi-agent coordinator
+│   │   ├── productOwnerAgent.js  # Business analysis
+│   │   ├── developerAgent.js     # Technical analysis
+│   │   ├── architectAgent.js     # Architecture analysis
+│   │   └── securityAgent.js      # Security analysis
+│   ├── services/
+│   │   ├── integrationService.js # Integration workflow
+│   │   ├── tokenService.js       # OAuth token management
+│   │   └── complianceService.js  # Compliance validation
+│   ├── middleware/
+│   │   ├── authMiddleware.js     # Authentication
+│   │   ├── auditLogger.js        # Audit logging
+│   │   └── inputValidation.js    # Input validation
+│   └── logs/
+│       └── combined.log          # Application logs
+├── frontend/
+│   ├── src/
+│   │   ├── App.js                # Main application
+│   │   ├── components/
+│   │   │   ├── IntegrationWorkflow.js
+│   │   │   ├── AIInvestigationTimeline.js
+│   │   │   ├── IncidentReport.js
+│   │   │   ├── ComplianceReport.js
+│   │   │   └── AutoFixPanel.js
+│   │   ├── context/
+│   │   │   └── AppContext.js     # Global state
+│   │   └── hooks/
+│   │       ├── useIntegrationWorkflow.js
+│   │       └── useIncidentManagement.js
+└── docs/
+    ├── ARCHITECTURE.md
+    ├── CHALLENGE_4_WORKFLOW_EXECUTION.md
+    ├── COMPLIANCE.md
+    ├── SECURITY.md
+    └── MCP_SERVER_GUIDE.md
 ```
 
-## Sample Incident Scenario
+## 🔌 API Endpoints
 
-**Scenario**: Payment API Authentication Failure
-
-**Simulated Error**:
-- Service: Payment API
-- Error Code: 401 Unauthorized
-- Message: "Authentication token expired"
-
-**AI Analysis Output**:
-- Root Cause: OAuth token expiration
-- Impacted Services: Order Service, Invoice Service
-- Suggested Fix: Refresh token configuration
-- Confidence: 92%
-
-## Compliance Controls
-
-The system validates:
-- ✅ TLS/HTTPS encryption
-- ✅ Log generation
-- ⚠️ Secret management
-- ✅ API authentication
-
-## Technology Stack
-
-- **Frontend**: React, Axios, CSS3
-- **Backend**: Node.js, Express
-- **AI Engine**: Custom multi-agent reasoning
-- **Storage**: JSON file-based storage
-- **Logging**: Winston
-
-## API Endpoints
-
-### Integration Workflow
-- `POST /api/integration/trigger` - Trigger integration workflow
-- `GET /api/integration/status/:id` - Get integration status
-- `POST /api/integration/apply-fix` - Apply AI fix and re-run integration
-
-### Incident Analysis
-- `GET /api/incidents/:id` - Get incident details
-- `GET /api/incidents/:id/timeline` - Get agent investigation timeline
-
-### Compliance
-- `GET /api/compliance/report` - Get compliance report
-
-## Development
-
-### Backend Structure
-```
-backend/
-├── server.js              # Express server
-├── routes/                # API routes
-├── services/              # Business logic
-├── agents/                # AI agent implementations
-└── utils/                 # Utilities
+### Trigger Integration Workflow
+```http
+POST /api/integration/trigger
 ```
 
-### Frontend Structure
-```
-frontend/
-├── src/
-│   ├── components/        # React components
-│   ├── services/          # API services
-│   └── App.js            # Main application
-└── public/
+### Get AI Investigation
+```http
+GET /api/investigation/:workflowId
 ```
 
-## Modernization Example
+### Apply Fix
+```http
+POST /api/integration/apply-fix
+```
 
-This project demonstrates modernization by:
-- Converting callback-based Node.js to async/await patterns
-- Using modern ES6+ JavaScript features
-- Implementing microservices architecture
-- Adding AI-driven automation
+### Get Compliance Report
+```http
+GET /api/compliance/report
+```
 
-## Future Enhancements
+## 🔒 Compliance & Security
 
-- Real integration with actual microservices
-- Machine learning model training on historical incidents
-- Slack/Teams notifications
-- Advanced compliance frameworks (SOC2, HIPAA)
-- Kubernetes deployment support
+### Implemented Controls
 
-## License
+| Control | Description | Status | Framework |
+|---------|-------------|--------|-----------|
+| SEC-001 | TLS Encryption | ✅ PASS | PCI DSS 4.1, SOC 2 |
+| AC-002 | Account Management | ✅ PASS | FedRAMP AC-2 |
+| IA-002 | User Identification | ✅ PASS | FedRAMP IA-2 |
+| IA-005 | Authenticator Management | ✅ PASS | FedRAMP IA-5 |
+| AU-002 | Audit Events | ✅ PASS | FedRAMP AU-2 |
+| SEC-002 | Secret Management | ⚠️ FAIL | PCI DSS 8.2 |
+| AUTH-001 | Token Refresh | ⚠️ WARNING | PCI DSS 8.2.4 |
+| SEC-004 | Rate Limiting | ⚠️ FAIL | OWASP API |
+
+**Overall Compliance Score:** 85%
+
+## 🐛 Troubleshooting
+
+### Backend won't start
+```bash
+# Check if port 5000 is in use
+netstat -ano | findstr :5000
+
+# Kill process and restart
+cd backend
+npm start
+```
+
+### Frontend won't start
+```bash
+# Clear cache and reinstall
+npm cache clean --force
+rm -rf node_modules package-lock.json
+npm install
+npm start
+```
+
+### AI Agents not responding
+- Verify backend is running on port 5000
+- Check browser console for errors
+- Review `backend/logs/combined.log`
+
+## 📚 Documentation
+
+- [`START_HERE.md`](START_HERE.md) - Quick start guide
+- [`ARCHITECTURE.md`](docs/ARCHITECTURE.md) - System architecture
+- [`CHALLENGE_4_WORKFLOW_EXECUTION.md`](docs/CHALLENGE_4_WORKFLOW_EXECUTION.md) - Real investigation example
+- [`COMPLIANCE.md`](docs/COMPLIANCE.md) - Compliance documentation
+- [`SECURITY.md`](docs/SECURITY.md) - Security documentation
+- [`MCP_SERVER_GUIDE.md`](docs/MCP_SERVER_GUIDE.md) - MCP setup guide
+- [`TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) - Common issues
+
+## 🎓 Key Concepts
+
+- **Multi-Agent Systems:** Specialized AI agents collaborate to solve complex problems
+- **Knowledge Graphs:** MCP Memory for context sharing across agents
+- **Integration Patterns:** Synchronous request-response chains
+- **OAuth Token Lifecycle:** Token expiration and refresh mechanisms
+- **Compliance Frameworks:** PCI DSS, SOC 2, GDPR, FedRAMP
+
+## 🗺️ Roadmap
+
+### Recent Updates
+- ✅ Multi-agent AI workflow (Challenge 4)
+- ✅ MCP server integration
+- ✅ Knowledge graph for context sharing
+- ✅ Frontend modernization
+- ✅ FedRAMP-style compliance controls
+- ✅ Auto-fix capability
+
+### Planned Features
+- [ ] Real OAuth 2.0 integration
+- [ ] Circuit breaker pattern
+- [ ] Distributed tracing
+- [ ] Real-time collaboration visualization
+- [ ] Machine learning for pattern recognition
+
+## 📄 License
 
 MIT License
 
-## Support
+---
 
-For issues or questions, please open an issue in the repository.
+**Built with ❤️ for demonstrating AI-powered integration incident management**
+
+**Version:** 1.0.0  
+**Last Updated:** March 2026
+
+---
+
+**Copy this entire content and save it as `README.md` in your `integration-incident-commander` directory.**
