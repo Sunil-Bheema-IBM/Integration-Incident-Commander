@@ -1,0 +1,61 @@
+.recommendation-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.recommendation-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.recommendation-card.priority-high {
+  border-left: 4px solid #dc3545;
+}
+
+.recommendation-card.priority-medium {
+  border-left: 4px solid #ffc107;
+}
+
+.recommendation-card.priority-low {
+  border-left: 4px solid #28a745;
+}
+
+.recommendation-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.75rem;
+}
+
+.recommendation-title {
+  color: #2a5298;
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.recommendation-description {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.recommendation-detail {
+  background: #f8f9fa;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+.recommendation-detail strong {
+  color: #2a5298;
+  margin-right: 0.5rem;
+}
+
+/* Made with Bob */

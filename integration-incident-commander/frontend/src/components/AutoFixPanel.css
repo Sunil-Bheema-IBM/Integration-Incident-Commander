@@ -1,0 +1,162 @@
+.auto-fix-panel {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 20px rgba(245, 87, 108, 0.3);
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fix-header {
+  margin-bottom: 1.5rem;
+}
+
+.fix-header h3 {
+  color: white;
+  font-size: 1.4rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+}
+
+.fix-header p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-size: 1rem;
+}
+
+.fix-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.fix-recommendation {
+  background: white;
+  border-radius: 8px;
+  padding: 1.25rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.fix-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+}
+
+.fix-details h4 {
+  color: #2a5298;
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.fix-description {
+  color: #555;
+  line-height: 1.6;
+  margin: 0 0 0.75rem 0;
+}
+
+.fix-impact {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.impact-label {
+  font-weight: 600;
+  color: #2a5298;
+}
+
+.impact-value {
+  color: #28a745;
+  font-weight: 500;
+}
+
+.apply-fix-button {
+  background: white;
+  color: #f5576c;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.apply-fix-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background: #fff;
+}
+
+.apply-fix-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.apply-fix-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.button-icon {
+  font-size: 1.3rem;
+}
+
+.spinner-small {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(245, 87, 108, 0.3);
+  border-top-color: #f5576c;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .auto-fix-panel {
+    padding: 1rem;
+  }
+
+  .fix-recommendation {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .fix-icon {
+    font-size: 2rem;
+  }
+
+  .apply-fix-button {
+    font-size: 1rem;
+    padding: 0.875rem 1.5rem;
+  }
+}
+
+/* Made with Bob */

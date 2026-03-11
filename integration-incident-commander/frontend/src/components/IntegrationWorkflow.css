@@ -1,0 +1,231 @@
+.workflow-diagram {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  padding: 2rem 0;
+}
+
+.workflow-step-container {
+  display: flex;
+  align-items: center;
+}
+
+.workflow-step {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  min-width: 250px;
+  transition: all 0.3s ease;
+}
+
+.workflow-step:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.step-success {
+  border-color: #28a745;
+  background: #f0fff4;
+}
+
+.step-failed {
+  border-color: #dc3545;
+  background: #fff5f5;
+}
+
+.step-pending {
+  border-color: #ffc107;
+  background: #fffbf0;
+}
+
+.step-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.step-success .step-icon {
+  background: #28a745;
+  color: white;
+}
+
+.step-failed .step-icon {
+  background: #dc3545;
+  color: white;
+}
+
+.step-pending .step-icon {
+  background: #ffc107;
+  color: white;
+}
+
+.step-details h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.step-time {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.step-error {
+  background: #fff0f0;
+  border-left: 4px solid #dc3545;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+}
+
+.step-error strong {
+  color: #dc3545;
+}
+
+.step-data {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.data-item {
+  margin: 0.25rem 0;
+}
+
+.data-key {
+  font-weight: 600;
+  color: #666;
+  margin-right: 0.5rem;
+}
+
+.data-value {
+  color: #333;
+}
+
+.workflow-arrow {
+  font-size: 2rem;
+  color: #ccc;
+  margin: 0 1rem;
+  font-weight: bold;
+}
+
+.workflow-status {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.workflow-loading {
+  text-align: center;
+  padding: 2rem;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .workflow-diagram {
+    flex-direction: column;
+  }
+  
+  .workflow-arrow {
+    transform: rotate(90deg);
+    margin: 1rem 0;
+  }
+  
+  .workflow-step {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+/* Incident Resolved Banner */
+.incident-resolved-banner {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+  animation: slideInDown 0.5s ease-out;
+}
+
+.banner-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+}
+
+.banner-content h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.banner-content p {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+/* Recovery Note */
+.recovery-note {
+  display: inline-flex;
+  align-items: center;
+  background: #e7f5ff;
+  border: 1px solid #339af0;
+  color: #1971c2;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.recovery-icon {
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Animations */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Made with Bob */
